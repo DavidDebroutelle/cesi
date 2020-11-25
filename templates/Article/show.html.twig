@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1>Détail de l'article</h1>
+    <p>{{ article.Titre }}</p>
+    <p>{{ article.Description }}</p>
+    <p>{{ article.Auteur }}</p>
+    <p><a href="/article/update/{{ article.Id }}"> Modifier ce super Article </a></p>
+    <p><a href="/article/delete/{{ article.Id }}"> Supprimer ce super Article </a></p>
+    <h2>Categorie</h2>
+    {% if categorie != null %}
+    <p>{{categorie.libelle}}</p>
+    <p>{{categorie.icon|raw}}</p>
+    {% endif %}
+    <div class="row">
+    {% for commentaire in commentaires %}
+        <div class="col-3">{{commentaire.Auteur}}</div>
+        <div class="col-3">{{commentaire.Texte}}</div>
+        <div class="col-3">{{commentaire.Mail}}</div>
+        <div class="col-3">{{commentaire.date|date('d/m/Y')}}</div>
+
+        {% endfor %}
+    </div>
+    {% include 'Commentaire/add.html.twig' %}
+{% endblock %}
