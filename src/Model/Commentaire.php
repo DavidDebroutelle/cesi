@@ -48,8 +48,8 @@ Class Commentaire {
             $requete = $bdd->prepare("UPDATE commentaires set Texte= :Texte, Auteur = :Auteur, Date = :Date, Mail = :mail WHERE Id = :Id");
             $date = new \DateTime();
             $requete->execute([
-                "Texte" => $this->getLibelle(),
-                "Auteur" => $this->getIcon(),
+                "Texte" => $this->getTexte(),
+                "Auteur" => $this->getAuteur(),
                 "Date" => $date->format('d/m/Y'),
                 "Mail" =>$this->getMail(),
                 "Id" => $this->getId()

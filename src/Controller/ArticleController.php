@@ -18,9 +18,7 @@ class ArticleController extends AbstractController {
             $objArticle->setDateAjout($_POST["DateAjout"]);
             $objArticle->setAuteur($_POST["Auteur"]);
             $objArticle->setCategorieId($_POST["categorie"]);
-
             $id = $objArticle->SqlAdd(BDD::getInstance());
-            // Redirection
             header("Location:/article/show/$id");
         }else{
             return $this->twig->render("Article/add.html.twig", array(
